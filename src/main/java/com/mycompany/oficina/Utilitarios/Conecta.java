@@ -107,7 +107,7 @@ public class Conecta {
             }  
         }
     
-    /*
+    
     
     
     public List<Cliente> getListaClientes() {
@@ -161,6 +161,8 @@ public class Conecta {
 	        throw new RuntimeException(e);
         }
     }
+    
+    /*
     
     public void alteraCliente(Cliente cliente) {
 	String sql = "update clientes set Nome=?, CPF=? where idClientes=?";

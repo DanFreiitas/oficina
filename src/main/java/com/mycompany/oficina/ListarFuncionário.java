@@ -4,17 +4,44 @@
  */
 package com.mycompany.oficina;
 
+import com.mycompany.oficina.Utilitarios.Funcionario;
+import com.mycompany.oficina.Utilitarios.Conecta;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Daniel
  */
 public class ListarFuncionário extends javax.swing.JInternalFrame {
 
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    Funcionario funcionario = new Funcionario();
+    
+    private void listarFuncionarios(){
+        ConectaBD();
+        List<Funcionario> ListaFuncionarios = con.getListaFuncionarios();
+        DefaultTableModel tabelaFuncionarios = (DefaultTableModel) jTable1.getModel();
+
+	for (Funcionario f : ListaFuncionarios) {
+            Object[] obj = new Object[]{
+                f.getNome(),
+                f.getCpf(),
+                f.getMatricula()
+            };
+            tabelaFuncionarios.addRow(obj);
+	}
+    }
     /**
      * Creates new form ListarFuncionário
      */
     public ListarFuncionário() {
         initComponents();
+        listarFuncionarios();
     }
 
     /**

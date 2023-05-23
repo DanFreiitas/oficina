@@ -4,6 +4,12 @@
  */
 package com.mycompany.oficina;
 
+import com.mycompany.oficina.Utilitarios.Cliente;
+import com.mycompany.oficina.Utilitarios.Conecta;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author Daniel
@@ -13,8 +19,35 @@ public class ListarClientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListarClientes
      */
+    
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    Cliente Cliente = new Cliente();
+    
+    private void listarClientes(){
+        ConectaBD();
+        List<Cliente> ListaClientes = con.getListaClientes();
+        DefaultTableModel tabelaClientes = (DefaultTableModel) jTable1.getModel();
+
+	for (Cliente c : ListaClientes) {
+            Object[] obj = new Object[]{
+                c.getIdcliente(),
+                c.getNome(),
+                c.getCpf()
+            };
+        tabelaClientes.addRow(obj);
+	}
+    }
+    //private void preencheTabela(){
+        
+    //}
     public ListarClientes() {
         initComponents();
+        listarClientes();
     }
 
     /**
@@ -46,21 +79,30 @@ public class ListarClientes extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID Cliente", "Nome", "CPF", "Veículo"
+                "ID Cliente", "Nome", "CPF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTable1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -82,6 +124,10 @@ public class ListarClientes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1AncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

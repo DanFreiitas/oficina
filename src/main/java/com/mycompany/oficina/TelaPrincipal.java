@@ -6,7 +6,6 @@ package com.mycompany.oficina;
 
 import com.mycompany.oficina.Utilitarios.Conecta;
 import java.awt.Color;
-
 /**
  *
  * @author Daniel
@@ -303,6 +302,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             this.jPanel2.setBackground(Color.red);
             this.jPanel3.setBackground(Color.green);
         }
+        
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
