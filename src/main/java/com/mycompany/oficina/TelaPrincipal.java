@@ -11,18 +11,28 @@ import java.awt.Color;
  * @author Daniel
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+    
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    private void firstUpdate(){
+        ConectaBD();
+        this.jLabel4.setText(Integer.toString(con.getTotalClientes()));
+        this.jLabel6.setText(Integer.toString(con.getTotalFuncionarios()));
+    }
+    
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        firstUpdate();
     }
-    static Conecta con;
     
-    public static void ConectaBD(){
-        con = new Conecta();
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
