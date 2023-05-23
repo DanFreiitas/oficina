@@ -195,7 +195,7 @@ public class Conecta {
 	    throw new RuntimeException(e);
 	}
     }
-    
+    */
     public void removeCliente(int id) {
 	try {
             PreparedStatement stmt = connection
@@ -203,21 +203,21 @@ public class Conecta {
             stmt.setInt(1, id);
             stmt.execute();
             stmt.close();
+            System.out.println("Cliente removido");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
     
-    public void removeFuncionario(int id) {
+    public void removeFuncionario(int matricula) {
 	try {
             PreparedStatement stmt = connection
-                .prepareStatement("delete from funcionarios where idFuncionarios=?");
-            stmt.setInt(1, id);
+                .prepareStatement("delete from funcionarios where Matricula=?");
+            stmt.setInt(1, matricula);
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-*/
 }
