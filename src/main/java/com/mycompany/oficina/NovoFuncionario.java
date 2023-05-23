@@ -4,6 +4,8 @@
  */
 package com.mycompany.oficina;
 
+import com.mycompany.oficina.Utilitarios.Conecta;
+import com.mycompany.oficina.Utilitarios.Funcionario;
 /**
  *
  * @author Daniel
@@ -16,6 +18,19 @@ public class NovoFuncionario extends javax.swing.JInternalFrame {
     public NovoFuncionario() {
         initComponents();
     }
+    
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    Funcionario f1 = new Funcionario();
+    
+    
+    private String nome;
+    private String cpf;
+    private String matricula;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +79,11 @@ public class NovoFuncionario extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -104,9 +124,9 @@ public class NovoFuncionario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,6 +151,25 @@ public class NovoFuncionario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.nome = this.jTextField1.getText();
+        this.cpf = this.jTextField2.getText();
+        this.matricula = this.jTextField3.getText();
+        
+        f1.setNome(nome);
+        f1.setCpf(cpf);
+        f1.setMatricula(matricula);
+        
+        
+        
+        ConectaBD();
+        con.adicionaFuncionario(f1);
+        
+        this.dispose();
+        
+        System.out.println("Funcionario adicionado!");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

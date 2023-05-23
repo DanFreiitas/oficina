@@ -55,6 +55,25 @@ public class Conecta {
 	}
     }
     
+    public void adicionaFuncionario(Funcionario funcionario) {
+	String sql = "insert into funcionarios " +
+	            "(Nome,CPF, Matricula)" +
+	            " values (?,?,?)";
+	try {
+	    // prepared statement para inserção
+	    PreparedStatement stmt = connection.prepareStatement(sql);
+	    // seta os valores
+	    stmt.setString(1,funcionario.getNome());
+	    stmt.setString(2,funcionario.getCpf());
+            stmt.setString(3,funcionario.getMatricula());
+	        // executa
+	    stmt.execute();
+	    stmt.close();
+	} catch (SQLException e) {
+            throw new RuntimeException(e);
+	}
+    }
+    
     public int getTotalClientes(){
             try{
                 int total = 0;
@@ -89,24 +108,7 @@ public class Conecta {
         }
     
     /*
-    public void adicionaFuncionario(Funcionario funcionario) {
-	String sql = "insert into funcionarios " +
-	            "(Nome,CPF, Matricula)" +
-	            " values (?,?,?)";
-	try {
-	    // prepared statement para inserção
-	    PreparedStatement stmt = connection.prepareStatement(sql);
-	    // seta os valores
-	    stmt.setString(1,funcionario.getNome());
-	    stmt.setString(2,funcionario.getCpf());
-            stmt.setString(3,funcionario.getMatricula());
-	        // executa
-	    stmt.execute();
-	    stmt.close();
-	} catch (SQLException e) {
-            throw new RuntimeException(e);
-	}
-    }
+    
     
     public List<Cliente> getListaClientes() {
 	try {
