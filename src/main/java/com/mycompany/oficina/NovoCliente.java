@@ -16,6 +16,18 @@ public class NovoCliente extends javax.swing.JInternalFrame {
     public NovoCliente() {
         initComponents();
     }
+    
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    Cliente c1 = new Cliente();
+    
+    
+    private String nome;
+    private String cpf;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +74,11 @@ public class NovoCliente extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(58, 167, 220));
@@ -128,9 +145,25 @@ public class NovoCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.nome = this.jTextField1.getText();
+        this.cpf = this.jTextField2.getText();
+        
+        c1.setNome(nome);
+        c1.setCpf(cpf);
+        
+        ConectaBD();
+        con.adicionaCliente(c1);
+        
+        this.dispose();
+        
+        System.out.println("Cliente adicionado!");
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
