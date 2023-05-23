@@ -4,6 +4,9 @@
  */
 package com.mycompany.oficina;
 
+import com.mycompany.oficina.Utilitarios.Conecta;
+import com.mycompany.oficina.Utilitarios.Cliente;
+
 /**
  *
  * @author Daniel

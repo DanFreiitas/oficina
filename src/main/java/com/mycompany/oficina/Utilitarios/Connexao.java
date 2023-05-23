@@ -1,4 +1,4 @@
-package com.mycompany.oficina;
+package com.mycompany.oficina.Utilitarios;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
