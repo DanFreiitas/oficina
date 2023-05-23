@@ -55,6 +55,39 @@ public class Conecta {
 	}
     }
     
+    public int getTotalClientes(){
+            try{
+                int total = 0;
+                PreparedStatement stmt = connection.prepareStatement("SELECT COUNT(*) FROM clientes");
+                ResultSet result = stmt.executeQuery();
+
+                while (result.next())
+                    total = result.getInt("COUNT(*)");
+                
+                return total;
+
+            } catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+        }   
+    
+    public int getTotalFuncionarios(){
+
+            try{
+                int total = 0;
+                PreparedStatement stmt = connection.prepareStatement("SELECT COUNT(*) FROM funcionarios");
+                ResultSet result = stmt.executeQuery();
+
+                while (result.next())
+                    total = result.getInt("COUNT(*)");
+                
+                return total;
+
+            } catch (SQLException e){
+                throw new RuntimeException(e);
+            }  
+        }
+    
     /*
     public void adicionaFuncionario(Funcionario funcionario) {
 	String sql = "insert into funcionarios " +

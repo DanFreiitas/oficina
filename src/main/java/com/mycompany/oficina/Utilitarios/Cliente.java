@@ -4,8 +4,6 @@
  */
 package com.mycompany.oficina.Utilitarios;
 
-import com.mycompany.oficina.Pessoa;
-
 /**
  *
  * @author Home
