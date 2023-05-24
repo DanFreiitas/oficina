@@ -31,7 +31,8 @@ public class ListarFuncionário extends javax.swing.JInternalFrame {
             Object[] obj = new Object[]{
                 f.getNome(),
                 f.getCpf(),
-                f.getMatricula()
+                f.getMatricula(),
+                f.getIdfuncionario()
             };
             tabelaFuncionarios.addRow(obj);
 	}
@@ -70,17 +71,17 @@ public class ListarFuncionário extends javax.swing.JInternalFrame {
         jTable1.setForeground(new java.awt.Color(58, 167, 220));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Matricula"
+                "Nome", "CPF", "Matricula", "idFuncionario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -162,7 +162,7 @@ public class Conecta {
         }
     }
     
-    /*
+   
     
     public void alteraCliente(Cliente cliente) {
 	String sql = "update clientes set Nome=?, CPF=? where idClientes=?";
@@ -195,7 +195,7 @@ public class Conecta {
 	    throw new RuntimeException(e);
 	}
     }
-    */
+   
     public void removeCliente(int id) {
 	try {
             PreparedStatement stmt = connection
