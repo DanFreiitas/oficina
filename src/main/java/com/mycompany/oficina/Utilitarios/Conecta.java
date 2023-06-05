@@ -31,7 +31,7 @@ public class Conecta {
     try { 
     	Class.forName(DRIVER);
         return DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/oficina", "root", "");
+        "jdbc:mysql://oficinadata.mysql.database.azure.com:3306/oficina?useSSL=true", "OficinaInteligente", "Aut0Mec4n1ca!");
         } catch (SQLException | ClassNotFoundException e) {
         throw new RuntimeException(e);
         }
